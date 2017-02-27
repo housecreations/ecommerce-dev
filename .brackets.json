@@ -1,0 +1,8 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/hsx/code/Laravel/420clothing/vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/nv.d3.min.js",
+        "/home/hsx/code/Laravel/ElenaSuarezStore/ElenaSuarez shop/public/js/dataload.js",
+        "/home/hsx/code/Laravel/Dsistemas/Dsistemas/gulpfile.js",
+        "C:/Users/Jesus/Desktop/Code/Laravel/Dsistemas/Dsistemas/gulpfile.js"
+    ]
+}
