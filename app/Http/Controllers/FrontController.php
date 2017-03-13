@@ -76,54 +76,54 @@ class FrontController extends Controller
     
      public function update(ImageRequest $request, $id)
     {
-         
-             if($request->file('image')){
-            
-                $file = $request->file('image');
-                $name = 'E-commerce_' .$id. "." . $file->getClientOriginalExtension();
-                $path = 'images/slider/';
-                $file->move($path, $name);
-                
-                $image = CarouselImage::find($id);
-                $image->image_url = $name;
-                $image->url_to = $request->url_to;
-                $image->save();
-        
-                return back();
-             
-             
-             
-             }else{
-                 
-               $image = CarouselImage::find($id);
-             
-               $image->url_to = $request->url_to;
-               $image->save();  
 
-               return back();
-             }
+
+
+        if($request->file('image')){
+
+            $file = $request->file('image');
+            $name = 'E-commerce_' .time(). "." . $file->getClientOriginalExtension();
+            $path = 'images/slider/';
+
+            $file->move($path, $name);
+
+            $image = CarouselImage::find($id);
+
+            /*   unlink("/home/nonstopc/exoticas.com.ve/images/slider/".$image->image_url);*/
+
+            if($image->image_url != 'default.jpg'){
+            unlink(public_path()."/images/slider/".$image->image_url);
+            }
+            $image->image_url = $name;
+            $image->url_to = $request->url_to;
+            $image->save();
+
+            return back();
+
+
+
+        }else{
+
+            $image = CarouselImage::find($id);
+
+            $image->url_to = $request->url_to;
+            $image->save();
+
+            return back();
+        }
+
             
          }
-    
-     public function mas()
+
+    public function mas()
     {
-    
-         $image = new CarouselImage();
-         $image->image_url = 'default.jpg';
-         $image->save();
-            
-         return back();   
-            
-        
-        
-    }
-    public function menos()
-    {
-        $images = CarouselImage::all();
-        $image = $images->last();
-        $image->delete();
-        
+
+        $image              = new CarouselImage();
+        $image->image_url   = 'default.jpg';
+        $image->save();
+
         return back();
-    
+
     }
+
 }

@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{ asset('cpanel/css/component.css')}}">
 
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+{{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">--}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/sl-slide.css')}}">
     <link rel="stylesheet" href="{{ asset('css/blue-scheme.css')}}">
     <link rel="stylesheet" href="{{ asset('css/animate.min.css')}}">
@@ -32,10 +33,11 @@
     <script src="{{ asset('cpanel/js/modernizr.custom.js')}}"></script>
 
 
+
     <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-
+    <script src="{{ asset('cpanel/js/custom.js')}}"></script>
 
 </head>
 <body>
@@ -61,6 +63,7 @@
                                 <a class="fa fa-users" href="{{ route('admin.users.index')}}">Usuarios</a>
 
                             </li>
+                            <li><a class="fa fa-puzzle-piece" href="{{ route('admin.templates.index')}}">Plantillas</a></li>
                             <li><a class="fa fa-archive" href="{{ route('admin.articles.index')}}">Artículos</a></li>
                             <li><a class="fa fa-list" href="{{ route('admin.categories.index')}}">Categorías</a></li>
                             <li>

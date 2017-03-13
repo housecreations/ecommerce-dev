@@ -19,4 +19,11 @@ class ArticlesTemplate extends Model
 
         return $this->hasMany('App\ArticlesTemplatesProperty');
     }
+
+    public function scopeSearch($query, $name)
+    {
+
+        return $query->where('name', 'LIKE', "%$name%");
+
+    }
 }

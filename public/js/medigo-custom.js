@@ -66,15 +66,17 @@ $(document).ready(function(){
     });
 
 
-    
-    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-		showLeft = document.getElementById( 'showLeft' );
-    
-  /*  showLeft.onclick = function() {
-	classie.toggle( this, 'active' );
-	classie.toggle( menuLeft, 'cbp-spmenu-open' );
 
-};*/
+    var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+        showLeft = document.getElementById( 'showLeft' );
+
+    if(showLeft != null){
+        showLeft.onclick = function() {
+            classie.toggle( this, 'active' );
+            classie.toggle( menuLeft, 'cbp-spmenu-open' );
+
+        };
+    }
     
     
     

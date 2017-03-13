@@ -82,31 +82,36 @@
 
 <div class="container pre-footer">
     <div class="col-md-12 text-center">
-        <div class="col-md-4">
-           <img src="{{asset('images/logo.png')}}" alt="Logo">
-           <p>Exóticas es una marca inspirada en embellecer a la mujer, su perfil va concretando en aquellas mujeres atrevidas y sexys que no temen lucir diferentes a la hora de salir a la calle. ¡No olvides que tú también puedes ser una Exótica! </p>
-        </div>
+
         <div class="col-md-4">
             
             <h2>Atención al cliente</h2>
             <ul>
-            <li><a href="{{url('/como-comprar')}}">¿Cómo comprar?</a></li>
-           <li><a href="{{url('/politica-privacidad')}}">Política de privacidad</a></li>
-           <li><a href="{{url('/terminos-y-condiciones')}}">Términos y condiciones</a></li>
-           <li><a href="{{url('/pagos-y-envios')}}">Pagos y envíos</a></li>
+            <li><a href="{{url('/how-to-buy')}}">¿Cómo comprar?</a></li>
+           <li><a href="{{url('/privacy-polices')}}">Política de privacidad</a></li>
+           <li><a href="{{url('/terms-and-conditions')}}">Términos y condiciones</a></li>
+           <li><a href="{{url('/payments-and-shipments')}}">Pagos y envíos</a></li>
            
            
             </ul>
+        </div>
+
+        <div class="col-md-4">
+            <img src="{{asset('images/logo.png')}}" alt="Logo">
+            <p>{{App\Config::whereOption('store_description')->first()->value}} </p>
         </div>
         
         <div class="col-md-4">
             
             <h2>Información de contacto</h2>
             <ul>
-           
-           <li>+58 414 865 27 77 </li>
-           <li>contacto@exoticas.com.ve</li>
-        
+
+                @if(App\Config::whereOption('phone_number')->first()->value)
+                    <li>{{App\Config::whereOption('phone_number')->first()->value}}</li>
+                @endif
+                @if(App\Config::whereOption('receiver_email')->first()->value)
+           <li>{{App\Config::whereOption('receiver_email')->first()->value}}</li>
+            @endif
            
            
             </ul>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CarouselImage;
+use App\FrontImage;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -55,6 +57,23 @@ class ConfigsController extends Controller
         $configuration_value->option    = 'admin_active';
         $configuration_value->value     = 1;
         $configuration_value->save();
+
+        //inicializar imagenes del inicio
+        for ($i = 0; $i < 5; $i++){
+
+            $image              = new FrontImage();
+            $image->image_url   = 'default.jpg';
+            $image->title       = 'Sin título '.($i+1);
+            $image->sub_title   = 'Sin título '.($i+1);
+            $image->url_to      = '#';
+            $image->save();
+
+        }
+
+        $image              = new CarouselImage();
+        $image->image_url   = 'default.jpg';
+        $image->url_to      = '#';
+        $image->save();
 
         return redirect()->route('admin.index');
 

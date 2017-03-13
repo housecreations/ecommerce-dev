@@ -5,6 +5,25 @@ Medigo Template (Blue)
 http://www.templatemo.com/preview/templatemo_460_medigo
 
 */
+
+.alert.alert-success.admin-alert {
+    position: relative;
+    top: 58px;
+    width: 50%;
+    /* top: 100px; */
+    /* position: relative; */
+    /* width: 50%; */
+    left: 25%;
+    /* padding: 15px; */
+    /* margin-bottom: 5px; */
+    /* border: 1px solid transparent; */
+    /* border-radius: 4px; */
+}
+
+.alert {
+    top: 10px;
+}
+
 .row.order-data {
     float: left;
 }
@@ -245,7 +264,7 @@ img.img-categories {
 .pre-footer ul {
     list-style: none;
     padding: 0;
-    text-align: left;
+    /*text-align: left;*/
 }
 
 .pre-footer img {
@@ -428,12 +447,12 @@ li.flex-active-slide {
     width: 100%;
 }
 
-.form-control:focus {
+/*.form-control:focus {
     border-color: #ff6600;
     outline: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    /* border-bottom: solid 3px #efb087; */
+    !* border-bottom: solid 3px #efb087; *!
     opacity: 1;
 }
 .form-control {
@@ -455,7 +474,7 @@ li.flex-active-slide {
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     border-bottom: solid 3px #ffd544;
     opacity: 0.6;
-}
+}*/
 
 
 .container.new-products {
@@ -913,7 +932,7 @@ img.img-errores {
 
 .main-navigation.pull-right {
     position: fixed;
-    top: 45px;
+    top: 55px;
     /* left: 0; */
     right: 30px;
     /* width: 100%; */
@@ -1198,7 +1217,7 @@ button.button-on:hover{
     cursor: pointer;
     background-image: none;
     /* border: 1px solid transparent; */
-    padding: 10px 20px;
+    padding: 5px 20px;
     /* font-size: 14px; */
     /* line-height: 1.42857; */
     border-radius: 4px;
@@ -1258,13 +1277,13 @@ button.button-on:hover{
 }
 
 .button.button-sm{
-    width: 15%;
+    width: auto;
 }
 .button.button-md{
-    width: 30%;
+    width: 25%;
 }
 .button.button-lg{
-    width: 40%;
+    width: 35%;
 }
 
 .items-no-nav .col-md-5.col-sm-7.col-md-offset-4.col-sm-offset-3 {
@@ -1846,9 +1865,9 @@ strong, b {
 }
 
 a, a:visited {
-     color: #ffd544;
+   /*  color: #ffd544;*/
   text-decoration: none !important;
-  outline: 0;
+  /*outline: 0;*/
 }
 
 
@@ -1857,12 +1876,12 @@ a, a:visited {
        transition: all 0.5s;
 }
     
-.form-control:focus {
+/*.form-control:focus {
     border-color: #ffd544;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgb(255, 255, 255);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgb(255, 255, 255);
-}
+}*/
 
 
 p a, p a:visited {
@@ -2000,7 +2019,7 @@ a, a:visited {
     display: none;
     top: 100%;
     left: -30px;
-    margin-top: 42px;
+    margin-top: 32px;
     position: absolute;
     width: 180px;
     /* background-color: black; */

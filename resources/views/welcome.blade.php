@@ -4,7 +4,6 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/flexslider.css')}}">
-
 @endsection
 
 @section('content') 
@@ -51,69 +50,51 @@
        </div>
 
 <!--new products-->
- 
+
 <div class="container front-images">
- 
+
+    @foreach($front_images->forPage(1,3) as $image)
     <div class="col-md-4 col-sm-4 col-xs-12 front-images-item">
         <a href="#">
-        <img src="/images/front-images/{{$front_images[0]->image_url}}" alt="Front image">
-        <h2 class="title wow fadeInLeft">{{$front_images[0]->title}}</h2>
-        <h2 class="sub-title wow fadeInRight">{{$front_images[0]->sub_title}}</h2>
+        <img src="/images/front-images/{{$image->image_url}} " alt="Front image">
+        <h2 class="title wow fadeInLeft">{{$image->title}}</h2>
+        <h2 class="sub-title wow fadeInRight">{{$image->sub_title}}</h2>
         </a>
     </div>
-   <div class="col-md-4 col-sm-4 col-xs-12 front-images-item">
-        <a href="#">
-        <img src="/images/front-images/{{$front_images[1]->image_url}}" alt="Front image">
-       <h2 class="title wow fadeInLeft">{{$front_images[1]->title}}</h2>
-       <h2 class="sub-title wow fadeInRight">{{$front_images[1]->sub_title}}</h2>
-        </a>
-    </div>
-    <div class="col-md-4 col-sm-4 col-xs-12 front-images-item">
-        <a href="#">
-         <img src="/images/front-images/{{$front_images[2]->image_url}}" alt="Front image">
-        <h2 class="title wow fadeInLeft">{{$front_images[2]->title}}</h2>
-        <h2 class="sub-title wow fadeInRight">{{$front_images[2]->sub_title}}</h2>
-        </a>
-    </div>
-   
+    @endforeach
+
 </div>
 
 
 
+ @if(!$featuredArticles->isEmpty())
 <div class="container new-products">
   <hr class="hr">
   
-  
+
   @include('admin.templates.partials.featured-articles') 
-  
+
  
     
 </div>
-
+@endif
 
 <!--new products-->
 
 <div class="container front-images margin-top-bottom">
- 
+    @foreach($front_images->forPage(2,3) as $image)
     <div class="col-md-6 col-sm-6 col-xs-12 front-images-item">
         <a href="#">
-        <img src="/images/front-images/{{$front_images[3]->image_url}}" alt="Front image">
-        <h2 class="title-big wow fadeInRight">{{$front_images[3]->title}}</h2>
-        <h2 class="sub-title-big wow fadeInRight">{{$front_images[3]->sub_title}}</h2>
+        <img src="/images/front-images/{{$image->image_url}}" alt="Front image">
+        <h2 class="title-big wow fadeInRight">{{$image->title}}</h2>
+        <h2 class="sub-title-big wow fadeInRight">{{$image->sub_title}}</h2>
         </a>
     </div>
-   <div class="col-md-6 col-sm-6 col-xs-12 front-images-item">
-        <a href="#">
-        <img src="/images/front-images/{{$front_images[4]->image_url}}" alt="Front image">
-       <h2 class="title-big wow fadeInRight">{{$front_images[4]->title}}</h2>
-       <h2 class="sub-title-big wow fadeInRight">{{$front_images[4]->sub_title}}</h2>
-        </a>
-    </div>
-    
+    @endforeach
    
 </div>
 
-
+@if(!$newArticles->isEmpty())
 <div class="container new-products">
   <hr class="hr">
   
@@ -167,7 +148,7 @@
                     </div>   
     
 </div>
-
+@endif
 
 @endsection
 

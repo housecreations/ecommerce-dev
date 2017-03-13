@@ -21,14 +21,23 @@ class WelcomeController extends Controller
     if ($initial_config->isEmpty()){
         return redirect('/admin/auth/login');
     }
-dd($initial_config);
+
     $carousel = CarouselImage::all();
     
     $featuredArticles = Article::where('featured', 'yes')->get();
     
-    $newArticles = Article::orderBy('id', 'DESC')->take(4)->get();    
+    $newArticles = Article::orderBy('id', 'DESC')->take(4)->get();
 
-    return view('welcome', ['carousel' => $carousel, 'newArticles' => $newArticles, 'currency' => Config::find(1)->currency, 'front_images' => FrontImage::all(), 'featuredArticles' => $featuredArticles]);  
+    $currency = Config::whereOption('currency')->first();
+
+    $front_images = FrontImage::all();
+
+    return view('welcome', [
+                            'carousel' => $carousel,
+                            'newArticles' => $newArticles,
+                            'currency' => $currency->value,
+                            'front_images' => $front_images,
+                            'featuredArticles' => $featuredArticles]);
         
         
     }

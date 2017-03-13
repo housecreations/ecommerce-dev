@@ -14,7 +14,7 @@
 Route::get('/api/test', 'MessagesController@api');
 
 
-Route::get('/buscar-articulos', 'ArticlesController@indexSearch');
+Route::get('/search-articles', 'ArticlesController@indexSearch');
 
 
 Route::post('/deleteNoUserCarts', 'ShoppingCartsController@eliminarcarritos');
@@ -51,8 +51,8 @@ Route::put('/home/passwords', [
 ]);
 
 
-Route::get('/carrito', 'ShoppingCartsController@index');
-Route::get('/carrito/vaciar', 'ShoppingCartsController@vaciar');
+Route::get('/cart', 'ShoppingCartsController@index');
+Route::get('/cart/empty', 'ShoppingCartsController@vaciar');
 
 
 Route::resource('in_shopping_carts', 'InShoppingCartsController', [
@@ -84,7 +84,7 @@ Route::get('/contact', ['as' => 'contact', function () {
 }]);
 
 
-Route::get('/articulos', function () {
+Route::get('/articles', function () {
 
 
     $categoriescat = App\Category::orderBy('id', 'DESC')->get();
@@ -98,7 +98,7 @@ Route::get('/articulos', function () {
 
 /* ruta para motrar los articulos de una categoria*/
 
-Route::get('/articulos/{category}', function ($cat) {
+Route::get('/articles/{category}', function ($cat) {
 
 
     $articles = App\Category::where('slug', '=', $cat)->first()->articles()->where('visible', '=', 'yes')->orderBy('id', 'DESC')->simplePaginate(8);
@@ -112,7 +112,7 @@ Route::get('/articulos/{category}', function ($cat) {
 });
 
 
-Route::get('articulos/{category}/{slug}', ['as' => 'mostrar.articulo', function ($cat, $slug) {
+Route::get('articles/{category}/{slug}', ['as' => 'mostrar.articulo', function ($cat, $slug) {
 
     $article = App\Article::where('slug', '=', $slug)->where('visible', '=', 'yes')->first();
 
@@ -151,38 +151,38 @@ Route::get('articulos/{category}/{slug}', ['as' => 'mostrar.articulo', function 
 }]);
 
 
-Route::get('/quienes-somos', function () {
+Route::get('/about-us', function () {
 
     return view('whoweare');
 
 });
 
-Route::get('/como-comprar', function () {
+Route::get('/how-to-buy', function () {
 
     return view('howtobuy');
 
 });
 
-Route::get('/politica-privacidad', function () {
+Route::get('/privacy-policies', function () {
 
     return view('privacypolicy');
 
 });
 
-Route::get('/terminos-y-condiciones', function () {
+Route::get('/terms-and-conditions', function () {
 
     return view('termsconditions');
 
 });
 
-Route::get('/pagos-y-envios', function () {
+Route::get('/payments-and-shipments', function () {
 
     return view('paysandshipment');
 
 });
 
 
-Route::get('/descuentos', function () {
+Route::get('/on-discount', function () {
 
     $articles = App\Article::where('on_discount', '=', 'yes')->where('visible', '=', 'yes')->orderBy('id', 'DESC')->simplePaginate(8);
     $currency = App\Config::find(1);
@@ -196,6 +196,11 @@ route::get('/checkout', ['uses' => 'PaymentsController@checkout', 'middleware' =
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
+
+    Route::get('front/edit/{id}/destroy', [
+        'uses' => 'FrontImagesController@destroyCarousel',
+        'as' => 'admin.carousel.destroy'
+    ]);
 
     Route::resource('payments_accounts', 'PaymentsAccountsController');
 
@@ -284,10 +289,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'uses' => 'FrontController@mas',
         'as' => 'admin.front.mas'
     ]);
-    Route::get('/front/edit/menos', [
+    /*Route::get('/front/edit/menos', [
         'uses' => 'FrontController@menos',
         'as' => 'admin.front.menos'
-    ]);
+    ]);*/
 
     /*Editar imagenes de inicio*/
     Route::get('/front-images/edit', [
@@ -368,8 +373,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
         $carousel = App\CarouselImage::all();
+
         $currency = App\Config::whereOption('currency')->first();
-        return view('admin.index', ['unread' => $unread, 'carousel' => $carousel, 'totalMonth' => $totalMonth, 'totalMonthCount' => $totalMonthCount, 'orderCount' => $orderCount, 'orderCountAll' => $orderCountAll, 'currency' => $currency->value, 'front_images' => $front_images]);
+
+        return view('admin.index', [
+                                    'unread'            => $unread,
+                                    'carousel'          => $carousel,
+                                    'totalMonth'        => $totalMonth,
+                                    'totalMonthCount'   => $totalMonthCount,
+                                    'orderCount'        => $orderCount,
+                                    'orderCountAll'     => $orderCountAll,
+                                    'currency'          => $currency->value,
+                                    'front_images'      => $front_images
+                                    ]);
     }]);
 
     Route::resource('users', 'UsersController');
@@ -387,7 +403,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     ]);
 
 
+    Route::resource('templates', 'TemplatesController');
+
     Route::resource('articles', 'ArticlesController');
+
     Route::get('articles/{id}/destroy', [
         'uses' => 'ArticlesController@destroy',
         'as' => 'admin.articles.destroy'

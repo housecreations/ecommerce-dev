@@ -178,8 +178,20 @@ footer p.admin {
         float: left;
 }
 
-a:hover{
+/*a:hover{
     color: #ff8839 !important;
+}*/
+
+a .fa:before {
+    width: 15px;
+}
+
+a.removeForm {
+    color: #dc2d03;
+}
+
+a.removeForm:hover {
+    color: #dc0009;
 }
 
 .admin-breadcrumb h2 {
@@ -254,11 +266,11 @@ a.admin-link:hover {
     text-align: center;
 }
 
-.form-control {
+/*.form-control {
     
     border-bottom: solid 3px #252525 !important;
   
-}
+}*/
 
 .cart-button, .button {
  
@@ -297,10 +309,10 @@ a.admin-link:hover {
     
 }
 
-.input-group-addon {
+/*.input-group-addon {
  
     opacity: 0 !important;
-}
+}*/
 
 
 .fa:before {

@@ -5,24 +5,19 @@
        <div class="responsive_menu">
         <ul class="main_menu">
            
-					            <li><a href="/quienes-somos">Nosotros</a>
+					            <li><a href="/about-us">Nosotros</a>
                                    
-                                    <li><a href="/articulos">Categorías</a>
+                                    <li><a href="/articles">Categorías</a>
 					            	<ul>
                                         @foreach($categories as $category)
-					            		<li><a href="/articulos/{{$category->slug}}">{{$category->name}}</a></li>
+					            		<li><a href="/articles/{{$category->slug}}">{{$category->name}}</a></li>
 					            		
                                         @endforeach
-                                         <li><a href="/descuentos">Descuentos</a></li>
+                                         <li><a href="/on-discount">Descuentos</a></li>
 					            	</ul>
 					            </li>
-					            
-					            
+
 					            <li><a href="{{ route('contact')}}">Contacto</a></li>
-                                
-                                
-                                
-                                
                                 
                                  @if(Auth::user())
                     
@@ -74,15 +69,15 @@
 						<nav class="main-nav visible-md visible-lg">
 							<ul class="sf-menu">
 								
-					            <li><a href="/quienes-somos">Nosotros</a>
+					            <li><a href="/about-us">Nosotros</a>
                                    
-                                    <li><a href="/articulos">Categorías</a>
+                                    <li><a href="/articles">Categorías</a>
 					            	<ul>
                                         @foreach($categories as $category)
-					            		<li><a href="/articulos/{{$category->slug}}">{{$category->name}}</a></li>
+					            		<li><a href="/articles/{{$category->slug}}">{{$category->name}}</a></li>
 					            		
                                         @endforeach
-                                        <li><a href="/descuentos">Descuentos</a></li>
+                                        <li><a href="/on-discount">Descuentos</a></li>
 					            	</ul>
 					            </li>
 					            
@@ -141,22 +136,10 @@
 
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 	
-	{!! Form::open(['url' => '/buscar-articulos', 'method' => 'GET', 'class' => '', 'id' => 'search-articles']) !!}
+	{!! Form::open(['url' => '/search-articles', 'method' => 'GET', 'class' => '', 'id' => 'search-articles']) !!}
 
- 
-   
-  
-    
-  
-    
-    
-    
-    
     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Buscar articulo...', 'id' => 'search-articles-sub']) !!}
 
-    
-    
-   
 {!! Form::close() !!}
 	<button id="showLeft"><i class="fa fa-search"></i></button>
 </nav>

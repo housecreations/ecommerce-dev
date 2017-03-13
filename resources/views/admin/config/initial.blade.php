@@ -29,6 +29,10 @@
                                 {!! Form::text('page_title', null, ['class' => 'form-control', 'required']) !!}
                             </div>
                             <div class="form-group">
+                                {!! Form::label('store_description', 'Descripción de la tienda') !!}
+                                {!! Form::textarea('store_description', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
                                 {!! Form::label('currency', 'Moneda') !!}
                                 {!! Form::select('currency', ['Bs' => 'Bolívares', '$' => 'Dólares Americanos'],null, ['id'=>'currencyCmb','class' => 'form-control', 'required', 'placeholder' => 'Seleccione una moneda']) !!}
                             </div>

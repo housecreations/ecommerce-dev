@@ -6,10 +6,37 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\FrontImage;
+use App\CarouselImage;
 use App\Http\Requests\ImageRequest;
+use Laracasts\Flash\Flash;
 
 class FrontImagesController extends Controller
 {
+
+    public function destroyCarousel($id)
+    {
+
+        $carouselImage = CarouselImage::find($id);
+
+        if(CarouselImage::count() == 1 ){
+            Flash::success("El banner no puede quedar sin imagen");
+            return back();
+        }
+
+        if($carouselImage->image_url != "default.jpg")
+            unlink(public_path()."\images\slider\\".$carouselImage->image_url);
+
+        /* unlink("/home2/dsistema/public_html/images/slider/".$carouselImage->image_url);*/
+
+        $carouselImage->delete();
+
+        return redirect()->route('admin.front.edit');
+
+
+
+    }
+
+
     public function edit()
     {
      
